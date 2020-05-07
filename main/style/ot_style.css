@@ -1,0 +1,17 @@
+.nav-md ul.nav.child_menu li:after {
+  border-left: 1px solid #2E3D98 !important;
+  bottom: 0;
+  content: "";
+  left: 27px;
+  position: absolute;
+  top: 0;
+}
+
+.nav-md ul.nav.child_menu li:before {
+  border-left: 1px solid #2E3D98 !important;
+  bottom: 0;
+  content: "";
+  left: 27px;
+  position: absolute;
+  top: 0;
+}

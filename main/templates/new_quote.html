@@ -1,0 +1,386 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+
+<style>
+
+    #but1 {
+        background-color: #97d8e8;
+        color: black;
+        text-align: center;
+        padding: 2px 8px;
+        border-radius: 1px;
+        display: inline-block;
+        font-size: 8px;
+        transition-duration: 0.4s;
+      }
+      #but1:hover {
+        background-color: #4CAF50;
+        color: white;
+      }
+
+    div {color:black;}
+
+    label {
+        float: left;
+        width: 200px;
+        padding-right: 24px;
+        }
+
+
+    input[type=text], select, textarea  {
+      width: 25%;
+      padding: 1.5px 8px;
+      border: 1px solid black;
+      margin: 4px 0;
+      box-sizing: border-box;
+    }
+    input[type=url]{
+      width: 25%;
+      padding: 1.5px 8px;
+      border: 1px solid black;
+      margin: 4px 0;
+
+    }
+
+
+
+
+    #table_style2, th, td {
+      border: 1px solid black;
+
+    }
+
+    #top_row th {
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+     }
+     #row1 {
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+      table-layout: auto;
+     }
+
+    .row3 {
+      text-align: left;
+      background-color: #edc37e;
+      color: black;
+      font-weight: normal;
+     }
+
+    .row4 {
+    font-weight: normal;
+    background-color: white;
+    }
+
+    .row5 {
+      text-align: left;
+      background-color: #3b64c4;
+      color: white;
+      font-weight: normal;
+     }
+
+    .row6 {
+      text-align: left;
+      background-color: #4CAF50;
+      color: black;
+      font-weight: normal;
+      }
+
+    .row7 {
+      text-align: left;
+      background-color: #c47d3b;
+      color: black;
+      font-weight: normal;
+      }4
+
+
+
+    .note {
+      position: relative;
+      border-color: #52E052;
+      background: #E9FBE9;
+      overflow: auto;
+      margin: 1em auto;
+      padding: .5em;
+      border: .5em;
+      border-left-style: solid;
+      page-break-inside: avoid;
+      text-transform: uppercase;
+      display: block;
+
+    }color: hsl(120, 70%, 30%);
+
+    th {
+      padding: 1px;
+    }
+
+  </style>
+
+<div class="right_col" role="main">
+
+  <div >
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2> New Quote </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Inputs</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">P&L Details</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Exec Summary</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+
+                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <!-- Form starts here-->
+              <div class="card">
+                <div class="card-header">Quote Edit</div>
+                    <div class="card-body">
+                <form action="#"  method='POST'> {% csrf_token %}
+                        <label >Quote ID</label>
+                            {% render_field form.quote_no placeholder='Auto Generated' %}<br>
+
+                        <label >Opportunity ID</label>
+                            {% render_field form.Opportunity_ID placeholder='Paste and Load' %}<input id="but1" type="submit" value="Load SFDC"><br>
+
+                        <label >Customer Name</label>
+                            {% render_field form.customer_name placeholder='Enter Account Name' %}<br>
+
+                        <label >Cloud Opportunity URL</label>
+                            {% render_field form.opp_url placeholder='paste SFDC url' %}<br>
+
+                        <label>Cloud Desk Specialist</label>
+                            {% render_field form.lead_name %}<br>
+
+                        <label>Cloud Opportunity type</label>
+                            {% render_field form.term_type %}<br>
+
+                        <label>Leading Product</label>
+                            {% render_field form.Leading_Product %}<br>
+
+                        <label>Non-standard terms or penalties?</label>
+                            {% render_field form.penalties %}<br>
+                            <textarea rows="3" placeholder="Please indicate Non-standard terms or penalties, if any..."></textarea><br>
+
+                        <label>Has the Enterprise Cloud Managed Services been excluded by a CDS rep? if so, who? <span class="badge badge-info" onclick="javascript:alert('Select if Enterprise Cloud Managed Services been excluded');">Info</span></label>
+                            {% render_field form.managed_services %}<br><br><br><br>
+
+                        <label>CDS Rep</label>
+                            {% render_field form.managed_services_rep %}<br>
+
+                        <label>Local Currency</label>
+                            {% render_field form.local_Currency %}<br>
+
+                         <div class="col-sm-10">
+                        <button class="btn btn-success" onclick="{% url 'list_quote' %}" type="submit">Submit</button>
+                        </div>
+                </form>
+
+                    </div>
+                                </div>
+                          </div>
+                          <!-- Form ends here -->
+                        </div>
+                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <!-- Detail view starts here -->
+                          <div class="card-body">
+
+                          <div>
+                        <div id="h5Div">
+                        <h5>P&L Summary over contract term, excluding PS T&M</h5>
+                          </div>
+                        <p class="note">Any reference to MCV is purely estimated, confirmation of official MCV must be requested by sales from the compensation team/Tracy Boone.</p>
+                        <p class="note">All costs & prices below are in the local currency of ALL</p>
+                        <table id="check">
+                          <thead>
+                            <tr id="row1">
+                              <th scope="row">Customer Name</th>
+                              <th scope="row">Opportunity URL</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr id="row2">
+                                <td>"Placeholder"</td>
+                                <td>"Placeholder"</td>
+                            </tr>
+                          </tbody>
+                        </table><br>
+                        <table id="table_style">
+                          <thead style="">
+                            <tr id="top_row">
+                              <th scope="col">Revenues</th>
+                              <th scope="col">1</th>
+                              <th scope="col">2</th>
+                              <th scope="col">3</th>
+                              <th scope="col">Total</th>
+                              <th scope="col">Margin</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row" class="row3">Subscription Software, OT</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row3">Subscription Software, 3rd party</th>
+                              <td>100,000</td>
+                              <td>200,000</td>
+                              <td>300,000</td>
+                              <td>400,000</td>
+                              <td>500,000</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row4">Perpetual Software Licence, OT</th>
+                              <td colspan="2">-</td>
+                              <td colspan="3">-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row4">Perpetual Software Licence, 3rd party</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row5">Cloud Hosting</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row5">One-time cloud hosting</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row5">Cloud Production Support (CPS)</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row5">Cloud Delivery Management (CDM)</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row5">Cloud Software Installation (CAPT)</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row5">[Cloud Services 1]</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row5">[Cloud Services 2]</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row6">Enterprise Cloud Managed Services (ECMS) - aka AMS</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row7">[Professional Services 1]</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row7">[Professional Services 2]</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row7">[Professional Services 3]</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row7">[Professional Services 4]</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" class="row4">Perpetual Software Maintenance</th>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        </div></div>
+                          <!-- Detail view ends here -->
+                      </div>
+                      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <h1>This tab is Under Construction</h1>
+                      </div>
+                    </div>
+
+                </div>
+              </div>
+
+
+</div>
+</div>
+{% endblock %}
+

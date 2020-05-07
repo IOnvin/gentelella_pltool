@@ -1,0 +1,55 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    lst-style: none;
+    text-decoration: none;
+}
+
+.sidebar{
+    position: fixed;
+    left: 0;
+    width: 250px;
+    background: #042331;
+}
+
+.sidebar header{
+    font-ize: 22px;
+    color: white;
+    text-align: center;
+    line-height: 70px;
+    background: #063146;
+    user-select: none;
+}
+
+.sidebar ul a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    color: white;
+    padding-left: 40px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255,255,255,.1);
+    border-bottom: 1px solid black;
+    transition: .4s
+
+}
+
+.container-fluid {
+        padding-right:15px;
+        padding-left:15px;
+        margin-right:auto;
+        margin-left:auto
+}
+
+.row {
+        margin-right:-15px;
+        margin-left:-15px
+}
+
