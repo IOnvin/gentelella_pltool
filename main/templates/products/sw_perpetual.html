@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+
+
+<style>
+    div {
+      color: black;
+    }
+
+    #table_style {
+      table-layout: auto;
+      width: 80%;
+    }
+
+    #table_style2 {
+      table-layout: auto;
+      width: 80%;
+    }
+
+    #check {
+      table-layout: fixed;
+      width: 50%;
+    }
+
+    #table_style, th, td {
+      border: 1px solid black;
+
+    }
+
+    #top_row th {
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+     }
+
+     #top_row2 th {
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+     }
+
+     #row1 {
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+      table-layout: auto;
+     }
+
+    .row3 {
+      text-align: left;
+      background-color: #edc37e;
+      color: black;
+      font-weight: normal;
+     }
+
+    .row4 {
+    font-weight: normal;
+    background-color: white;
+    }
+
+    .row5 {
+      text-align: left;
+      background-color: #3b64c4;
+      color: white;
+      font-weight: normal;
+     }
+
+    .row6 {
+      text-align: left;
+      background-color: #4CAF50;
+      color: black;
+      font-weight: normal;
+      }
+
+    .row7 {
+      text-align: left;
+      background-color: #c47d3b;
+      color: black;
+      font-weight: normal;
+      }4
+
+    #table_style tr:nth-child(even){background-color: #f2f2f2;}
+    #table_style tr:hover {background-color: #ddd;}
+    #row2:nth-child(even){background-color: #f2f2f2;}
+    #row2:hover {background-color: #ddd;}
+    #table_style2 tr:nth-child(even){background-color: #f2f2f2;}
+    #table_style2 tr:hover {background-color: #ddd;}
+
+    .note {
+      position: relative;
+      border-color: #52E052;
+      background: #E9FBE9;
+      overflow: auto;
+      margin: 1em auto;
+      padding: .5em;
+      border: .5em;
+      border-left-style: solid;
+      page-break-inside: avoid;
+      text-transform: uppercase;
+      display: block;
+
+    }color: hsl(120, 70%, 30%);
+
+    th {
+      padding: 1px;
+    }
+  </style>
+
+<div class="right_col" role="main">
+  <h1>{{ total_volDiscPrice_p }}</h1>
+<h1>OT Direct Products</h1>
+<table id="table_style">
+  <thead style="">
+    <tr id="top_row">
+      <th scope="col">Product</th>
+      <th scope="col">Target Disc.</th>
+      <th scope="col">Curr. Disc.</th>
+      <th scope="col">Vol. Disc. Price</th>
+      <th scope="col">Net Sales</th>
+      <th scope="col">Revised Net Sales</th>
+      <th scope="col">Currency</th>
+      <th scope="col">Id</th>
+    </tr>
+  </thead>
+  <tbody>
+ {% for i in form_perp %}
+  {% if i.thirdPartyContent_p == 'No' %}
+    <tr>
+      <th scope="row" class="row3">{{ i.productName_p }}</th>
+      <td>{{ i.add_quote_p.perpetualSoftwareOTDirectDiscount }}%</td>
+      <td>{{ i.salesDisc_p }}%</td>
+      <td>{{ i.volDiscPrice_p|floatformat:"2" }}</td>
+      <td>{{ i.netSales_p }}</td>
+      <td>{{ i.get_revised_net_sales|floatformat:"2" }}</td>
+      <td>{{ i.currency_p }}</td>
+      <td>{{ i.OppId_p }}</td>
+    </tr>
+ {% endif %}
+  {% endfor %}
+    <tr>
+      <th scope="row" class="row3">Total</th>
+      <td>-</td>
+      <td>-</td>
+      <td>{{ get_total }}</td>
+      <td>{{ total_volDiscPrice_p.volDiscPrice_p__sum }}</td>
+      <td>{{ vol_tot }}</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table><br>
+<h1>Third Party Products</h1>
+<table id="table_style2">
+  <thead style="">
+    <tr id="top_row2">
+      <th scope="col">Product</th>
+      <th scope="col">Target Disc.</th>
+      <th scope="col">Curr. Disc.</th>
+      <th scope="col">Net Sales</th>
+      <th scope="col">Revised Net Sales</th>
+      <th scope="col">Currency</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in form_perp %}
+   {% if i.thirdPartyContent_p == '100%' %}
+    <tr>
+      <th scope="row" class="row3">{{ i.productName_p }}</th>
+      <td>{{ i.add_quote_p.perpetualSoftwareThirdPartyDiscount }}%</td>
+      <td>{{ i.salesDisc_p }}%</td>
+      <td>{{ i.netSales_p }}</td>
+      <td>{{ i.get_revised_net_sales_third_party|floatformat:"2" }}</td>
+      <td>{{ i.currency_p }}</td>
+    </tr>
+   {% endif %}
+  {% endfor %}
+  </tbody>
+</table><br>
+
+</div>
+{% endblock %}

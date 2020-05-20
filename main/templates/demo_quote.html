@@ -21,6 +21,32 @@
           color: white;
     }
 
+    #backgr {
+    background-color: rgb(252, 243, 207);
+    }
+
+     label {
+        float: left;
+        width: 200px;
+        padding-right: 24px;
+        }
+
+
+    input[type=text], select, textarea  {
+      width: 60%;
+      padding: 1.5px 8px;
+      border: 1px solid black;
+      margin: 4px 0;
+      box-sizing: border-box;
+    }
+    input[type=url]{
+      width: 60%;
+      padding: 1.5px 8px;
+      border: 1px solid black;
+      margin: 4px 0;
+
+    }
+
 </style>
 
 
@@ -58,9 +84,9 @@
                     <div class="card-body">
                         <form action="#" class="form-horizontal form-label-left" method='POST'> {% csrf_token %}
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Quote ID</label>
+                        <label class="col-sm-2 col-form-label">Quote Name</label>
                         <div class="col-sm-4">
-                            {% render_field form.quote_no placeholder='Auto Generated' %}<br></div>
+                            {% render_field form.quote_name placeholder='Give a New Quote Name' %}<br></div>
                         <label class="col-sm-2 col-form-label">Opportunity ID</label>
                         <div class="col-sm-4">
                             {% render_field form.Opportunity_ID placeholder='Paste and Load' %}<input id="sfdcload" type="submit" value="Load"><br></div>
@@ -92,12 +118,27 @@
                             <textarea class="form-control z-depth-1" rows="3" placeholder="Why is Cloud Managed Services been excluded?"></textarea><br></div>
                         <label class="col-sm-2 col-form-label">Local Currency</label>
                         <div class="col-sm-4">
-                            {% render_field form.local_Currency %}<br><br><br>
+                            {% render_field form.local_Currency %}</div><br>
+
+                        <label class="col-sm-2 col-form-label">Subscription Software OT Direct Discount (%)</label>
+                        <div class="col-sm-4">
+                            {% render_field form.subscriptionSoftwareOTDirectDiscount id="backgr"%}</div>
+
+                        <label class="col-sm-2 col-form-label">Subscription Software Third Party Discount (%)</label>
+                        <div class="col-sm-4">
+                            {% render_field form.subscriptionSoftwareThirdPartyDiscount id="backgr"%}</div>
+
+                        <label class="col-sm-2 col-form-label">Perpetual Software OT Direct Discount (%)</label>
+                        <div class="col-sm-4" >
+                            {% render_field form.perpetualSoftwareOTDirectDiscount id="backgr" %}</div>
+
+                        <label class="col-sm-2 col-form-label">Perpetual Software Third Party Discount (%)</label>
+                        <div class="col-sm-4">
+                            {% render_field form.perpetualSoftwareThirdPartyDiscount id="backgr"%}</div><br><br><br>
 
                          <div class="col-sm-10">
                         <input class="btn btn-success" type="submit" value="Save">
                         </div>
-                    </div>
                     </div>
                 </form>
                                 </div>

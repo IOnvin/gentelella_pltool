@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+
+<div class="right_col" role="main">
+
+<!-- Page Content -->
+    <div class="x_panel">
+                  <div class="x_title">
+                    <h2> New Quote </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <!-- Form starts here-->
+              <div class="card">
+                <div class="card-header">Quote Edit</div>
+                    <div class="card-body">
+                        <form action="{% url 'Mod1View' %}" class="form-horizontal form-label-left" method='POST'> {% csrf_token %}
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-4">
+                                    {% render_field form.mod1Name %}<br></div>
+                                <label class="col-sm-2 col-form-label">Num 1</label>
+                                <div class="col-sm-4">
+                                    {% render_field form.mod1Num1 %}<br></div>
+                                <label class="col-sm-2 col-form-label">Num 2</label>
+                                <div class="col-sm-4">
+                                    {% render_field form.mod1Num2 %}<br></div>
+                                <label class="col-sm-2 col-form-label">True/False</label>
+                                <div class="col-sm-4">
+                                    {% render_field form.mod1Bool1 %}<br></div><br><br><br>
+
+                    <!-- Form 2 -->
+
+                                 <label class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-4">
+                                    {% render_field form2.mod2Name %}<br></div>
+                                <label class="col-sm-2 col-form-label">Num 1</label>
+                                <div class="col-sm-4">
+                                    {% render_field form2.mod2Num1 %}<br></div>
+                                <label class="col-sm-2 col-form-label">Num 2</label>
+                                <div class="col-sm-4">
+                                    {% render_field form2.mod2Num2 %}<br></div>
+                                <label class="col-sm-2 col-form-label">True/False</label>
+                                <div class="col-sm-4">
+                                    {% render_field form2.mod2Bool1 %}<br></div><br><br><br>
+                                {% for i in form %}
+                                <div class="col-sm-10">
+                                     <h1>Result: {{ i.calcul }}</h1>
+                                    {% endfor %}
+                                <input class="btn btn-success" type="submit" value="Save">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+              </div>
+                          <!-- Form ends here -->
+      </div>
+</div>
+</div>
+</div>
+    <!-- End of Page Content -->
+</div>
+
+</div>
+{% endblock %}

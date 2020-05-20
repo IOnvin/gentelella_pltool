@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+
+<style>
+    div {
+    color: black;
+    }
+</style>
+
+<div class="right_col" role="main">
+
+<!-- Page Content -->
+    <div class="row">
+    <div class="card">
+        <div class="card-header"><h5 class="m-0 font-weight-bold text-primary">Add Products</h5></div>
+        <div class="card-body">
+          <form action="#" class="form-horizontal form-label-left" method="post"> {% csrf_token %}
+              <div class="card card-collapsable">
+                  <div class="card-header"><h6 class="m-0 font-weight-bold text-info">Product</h6></div>
+        <div class="card-body">
+                <div class="form-group row">
+
+              <label class="col-sm-2 col-form-label">Quote Name</label>
+                <div class="col-sm-4">
+                  {% render_field form.add_quote_p placeholder='' %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Schedule Name</label>
+                <div class="col-sm-4">
+                  {% render_field form.add_quote_sched_perp placeholder='' %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Product Name</label>
+                <div class="col-sm-4">
+                  {% render_field form.productName_p placeholder='' %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Third Party Content</label>
+                <div class="col-sm-4">
+                  {% render_field form.thirdPartyContent_p %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Quantity</label>
+                <div class="col-sm-4">
+                  {% render_field form.quantity_p %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Units</label>
+                <div class="col-sm-4">
+                  {% render_field form.units_p %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Sales Disc. (%)</label>
+                <div class="col-sm-4">
+                  {% render_field form.salesDisc_p %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Currency</label>
+                <div class="col-sm-4">
+                  {% render_field form.currency_p %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Net Sales</label>
+                <div class="col-sm-4">
+                  {% render_field form.netSales_p %}<br></div>
+
+              <label class="col-sm-2 col-form-label">MCV</label>
+                <div class="col-sm-4">
+                  {% render_field form.mcv_p %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Vol. Disc. Price</label>
+                <div class="col-sm-4">
+                  {% render_field form.volDiscPrice_p %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Term</label>
+                <div class="col-sm-4">
+                  {% render_field form.termMonthly_p %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Product Type</label>
+                <div class="col-sm-4">
+                  {% render_field form.productType_p %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Id</label>
+                <div class="col-sm-4">
+                  {% render_field form.OppId_p %}<br></div>
+
+                </div></div>
+               <div class="col-sm-10">
+              <input onclick="/" class="btn btn-success" type="submit" value="Save">
+               </div>
+              </div>
+</form>
+            </div>
+        </div>
+
+      </div>
+    <!-- End of Page Content -->
+
+</div>
+{% endblock %}

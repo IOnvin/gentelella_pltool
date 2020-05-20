@@ -66,14 +66,14 @@ WSGI_APPLICATION = 'gentelella.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gentelella',
+        'NAME': 'gentelella3',
         'USER': 'myroot',
         'PASSWORD': 'root',
         'HOST': 'localhost',
         'ROOT': '3306',
     }
 }
-
+USE_THOUSAND_SEPARATOR = True
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

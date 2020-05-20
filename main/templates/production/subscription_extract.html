@@ -4,44 +4,90 @@
 
 <style>
     div {
-        color: black;
+    color: black;
     }
-
-    #form_style {
-        width: 100%;
-    }
-
 </style>
 
 <div class="right_col" role="main">
 
-      <div id="form_style">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>SFDC Extract - Subscription <small>Eventually this will be auto fill from SFDC</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <br />
-                    <form action="#"  method='POST'> {% csrf_token %}
-                        <label >Product Name</label>
-                            {% render_field form.productName placeholder='Auto Generated' %}<br>
+  <div class="row">
+    <div class="card">
+        <div class="card-header"><h5 class="m-0 font-weight-bold text-primary">Add Products</h5></div>
+        <div class="card-body">
+          <form action="#" class="form-horizontal form-label-left" method="post"> {% csrf_token %}
+              <div class="card card-collapsable">
+                  <div class="card-header"><h6 class="m-0 font-weight-bold text-info">Product 1</h6></div>
+        <div class="card-body">
+                <div class="form-group row">
 
-                        <div class="col-sm-10">
-                        <button class="btn btn-success" onclick="{% url 'index' %}" type="submit">Submit</button>
-                        </div>
-                    </form>
-                  </div>
-                </div>
+              <label class="col-sm-2 col-form-label">Quote Name</label>
+                <div class="col-sm-4">
+                  {% render_field form.add_quote_p. placeholder='' %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Product Name</label>
+                <div class="col-sm-4">
+                  {% render_field form.productName placeholder='' %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Third Party Content</label>
+                <div class="col-sm-4">
+                  {% render_field form.thirdPartyContent %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Quantity</label>
+                <div class="col-sm-4">
+                  {% render_field form.quantity %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Units</label>
+                <div class="col-sm-4">
+                  {% render_field form.units %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Sales Disc. (%)</label>
+                <div class="col-sm-4">
+                  {% render_field form.salesDisc %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Currency</label>
+                <div class="col-sm-4">
+                  {% render_field form.currency %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Net Sales</label>
+                <div class="col-sm-4">
+                  {% render_field form.netSales %}<br></div>
+
+              <label class="col-sm-2 col-form-label">MCV</label>
+                <div class="col-sm-4">
+                  {% render_field form.mcv %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Vol. Disc. Price</label>
+                <div class="col-sm-4">
+                  {% render_field form.volDiscPrice %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Term</label>
+                <div class="col-sm-4">
+                  {% render_field form.termYearly %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Product Type</label>
+                <div class="col-sm-4">
+                  {% render_field form.productType %}<br></div>
+
+              <label class="col-sm-2 col-form-label">Id</label>
+                <div class="col-sm-4">
+                  {% render_field form.OppId %}<br></div>
+
+              <label class="col-sm-2 col-form-label">3rdParty</label>
+                <div class="col-sm-4">
+                  {% render_field form.thirdPartyBool %}<br></div>
+
+              <label class="col-sm-2 col-form-label">ValidProductType</label>
+                <div class="col-sm-4">
+                  {% render_field form.validProductType %}<br></div>
+                </div></div>
+               <div class="col-sm-10">
+              <input onclick="{% url 'sub_calc' %}" class="btn btn-success" type="submit" value="Save">
+               </div>
               </div>
+</form>
+            </div>
+        </div>
 
+      </div>
 </div>
-
-
 {% endblock %}

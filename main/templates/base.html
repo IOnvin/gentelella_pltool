@@ -77,6 +77,42 @@
                         <li><a href="{% url 'demo_quote' %}">Demo</a></li>
                     </ul>
                   </li>
+                  </li>
+
+                     <li><a><i class="fa fa-plus-square"></i> Add Products <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a>Perpetual<span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li class="sub_menu"><a href="{% url 'schedule_perp' %}">Add Schedule</a>
+                            </li>
+                            <li><a href="{% url 'perpetual_add' %}">Add Perpetual</a>
+                            </li>
+                            <li><a href="{% url 'perpetual_list' %}">List Perpetual</a>
+                            </li>
+                            <li><a href="{% url 'perpetual_sw' %}">View Perpetual</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a>Subscription<span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li class="sub_menu"><a href="#">Level Two</a>
+                            </li>
+                            <li><a href="#">Level Two</a>
+                            </li>
+                            <li><a href="#">Level Two</a>
+                            </li>
+                          </ul>
+                        </li>
+                        </li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-edit"></i> Test Ground <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'Mod1View' %}">Create Form</a></li>
+                      <li><a href="#">Create Form</a></li>
+                    </ul>
+                  </li>
                   <!--
                   <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -93,12 +129,15 @@
                   </li> -->
                   <li><a><i class="fa fa-cogs"></i> Production <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">6.Subscription sw</a></li>
-                      <li><a href="{% url 'sub_prod' %}">SFDC Extract - Subscription</a></li>
+                      <li><a href="{% url 'sub_calc' %}">6.Subscription sw</a></li>
+                      <li><a href="{% url 'sub_list' %}">Subscription List</a></li>
+                      <li><a href="{% url 'sub_extract' %}">SFDC Extract - Subscription</a></li>
                       <li><a href="#">7.Perpetual sw</a></li>
                       <li><a href="#">SFDC Extract - Perpetual</a></li>
                     </ul>
                   </li>
+
+
 
                   <li><a><i class="fa fa-table"></i> Reports <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
